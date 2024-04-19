@@ -1,4 +1,6 @@
-FROM denoland/deno:1.18.1
+# FROM denoland/deno:1.18.1 --platform=linux/arm64
+# FROM denoland/deno:1.42.4
+FROM lukechannings/deno:v1.31.1
 
 WORKDIR /app
 
@@ -17,3 +19,4 @@ ADD . .
 RUN deno cache --reload --lock=lock.json index.ts
 
 CMD ["run", "--cached-only", "--allow-net", "index.ts"]
+# CMD ["run", "--allow-net", "index.ts"]

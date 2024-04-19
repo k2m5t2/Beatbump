@@ -1,7 +1,8 @@
-version: "3"
+# version: "3"
 
 services:
   app:
+    platform: linux/arm64
     build:
       context: ./app
       dockerfile: Dockerfile
@@ -9,11 +10,13 @@ services:
         - PORT=$PORT
     ports:
       - "443:${PORT}"
+      - "3000:3000"
     environment:
       PORT: 3000
-      VITE_DOMAIN: "beatbump.ml"
-      VITE_SITE_URL: "https://beatbump.ml"
-      VITE_DONATION_URL: "https://www.paypal.com/donate/?hosted_button_id=E6YRHKS2H2KP2"
+      # VITE_DOMAIN: "beatbump.ml"
+      # VITE_SITE_URL: "https://beatbump.ml"
+      VITE_DOMAIN: "beatbump.yunhocho.com"
+      VITE_SITE_URL: "https://beatbump.yunhocho.com"
   proxy:
     build:
       context: ./packages/proxy-server/deno
